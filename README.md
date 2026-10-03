@@ -83,13 +83,31 @@ DSH 的推理强度来自**适配器声明**的元数据（`dsh-llm` 的 `LlmMod
 
 ## 安装
 
-本插件已作为本地 `link:` 依赖装进 desktop profile：
+### 从 GitHub 安装
+
+```powershell
+dsh plugin --profile <profile> add github:3likofj/dsh-custom-reasoning
+```
+
+把 `<profile>` 换成你的 profile 名（例如 `desktop`）。需要可复现的固定版本时，在末尾钉住一个提交：
+
+```powershell
+dsh plugin --profile <profile> add github:3likofj/dsh-custom-reasoning#<commit-sha>
+```
+
+仓库：<https://github.com/3likofj/dsh-custom-reasoning>
+
+### 本地 `link:` 安装（开发用）
+
+改代码时指向工作副本，改动直接生效、无需重新安装：
 
 ```powershell
 dsh plugin --profile desktop add link:<本目录绝对路径>
 ```
 
-装好后需要**启用 bundle**（`dsh.profile.bundles` 里要有 `dsh-custom-reasoning`）。
+### 启用 bundle
+
+两种装法都需要**启用 bundle**（`dsh.profile.bundles` 里要有 `dsh-custom-reasoning`）。
 
 插件通过 `package.json` 的 `dsh.bundle.patch`（`cordis.patch.yml`）插入一行 Loader 条目；
 `dsh.client` 声明让 Web 端加载 `exports["./client"]`（`lib/client.js`）。
