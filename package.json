@@ -1,8 +1,7 @@
 {
   "name": "dsh-custom-reasoning",
   "version": "0.1.0",
-  "private": true,
-  "description": "为官方未提供推理强度(Effort)的模型一键开启标准五档推理等级；开启后由 DSH 官方推理等级选择器接管。",
+  "description": "为官方未提供推理强度(Effort)的第三方模型自动补上标准五档推理等级，之后由 DSH 官方推理等级选择器接管。",
   "type": "module",
   "main": "lib/index.js",
   "exports": {
@@ -15,10 +14,19 @@
     "./package.json": "./package.json"
   },
   "files": [
-    "lib",
+    "lib/index.js",
+    "lib/client.js",
     "cordis.patch.yml",
     "README.md",
     "LICENSE"
+  ],
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "cordis",
+    "reasoning-effort",
+    "llm-pi-ai"
   ],
   "license": "MIT",
   "engines": {

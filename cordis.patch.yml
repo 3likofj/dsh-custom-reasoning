@@ -1,12 +1,13 @@
-# dsh-custom-reasoning bundle patch
+# dsh-custom-reasoning bundle patch.
 #
-# One row, dual-face: the node half is this package's default export
-# (`lib/index.js`, a plain Cordis plugin declaring the plugin's own Config),
-# and `package.json`'s `dsh.client` declaration makes the Web app load
-# `exports["./client"]` (`lib/client.js`) as the browser half.
+# One row, dual-face. The row name MUST equal the package name: the
+# client-modules node half resolves `require.resolve('<row-name>/package.json')`
+# to find the owning package manifest.
 #
-# The row name MUST equal the package name: the client-modules node half
-# resolves the row's module specifier to find the owning package manifest.
+#   node half : the package default export (`exports["."]` -> lib/index.js),
+#               a dependency-free no-op Cordis plugin.
+#   web half  : `exports["./client"]` (lib/client.js), discovered through the
+#               package.json `dsh.client` declaration.
 - insert:
     - id: dsh-custom-reasoning
       name: dsh-custom-reasoning
